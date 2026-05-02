@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
 .env
+.env*.local
+.env.*.local
 .venv/
 logs/
 dist/
@@ -9,3 +11,4 @@ node_modules/
 .next/
 out/
 *.tsbuildinfo
+!.env.example

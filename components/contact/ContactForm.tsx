@@ -12,6 +12,7 @@ type FormState = {
   email: string;
   type: string;
   message: string;
+  website: string;
 };
 
 const initialFormState: FormState = {
@@ -19,6 +20,7 @@ const initialFormState: FormState = {
   email: "",
   type: inquiryTypes[0],
   message: "",
+  website: "",
 };
 
 export function ContactForm() {
@@ -70,6 +72,7 @@ export function ContactForm() {
           email: form.email.trim(),
           type: form.type.trim(),
           message: form.message.trim(),
+          website: form.website.trim(),
         }),
       });
 
@@ -92,6 +95,16 @@ export function ContactForm() {
 
   return (
     <form className="grid gap-6" onSubmit={handleSubmit}>
+      <input
+        aria-hidden="true"
+        autoComplete="off"
+        className="hidden"
+        name="website"
+        onChange={(event) => updateField("website", event.target.value)}
+        tabIndex={-1}
+        type="text"
+        value={form.website}
+      />
       <label className="grid gap-2">
         <span className="text-sm font-semibold tracking-[0.18em] text-royalGold">Name</span>
         <input
