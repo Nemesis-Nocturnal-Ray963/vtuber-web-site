@@ -11,7 +11,6 @@
 - lucide-react
 - ESLint
 - Prettier
-- Netlify Forms ready
 
 ## Setup
 
@@ -62,7 +61,7 @@ public/images/ogp.png
 5. `@netlify/plugin-nextjs` は `netlify.toml` で有効化済みです。
 6. Deployを実行します。
 
-`CONTACT` ページのフォームはNetlify Forms用の属性を付けています。Netlify上でビルドするとフォーム検出の対象になります。
+`CONTACT` page submits JSON to the Next.js API Route at `/api/contact`.
 
 ## Notes
 
