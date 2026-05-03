@@ -5,8 +5,8 @@ import { createMetadata, siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
   ...createMetadata(),
+  metadataBase: new URL(siteConfig.url),
   icons: {
     icon: [
       { url: siteConfig.images.favicon, sizes: "32x32", type: "image/png" },

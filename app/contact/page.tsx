@@ -17,7 +17,7 @@ export default function ContactPage() {
         <SectionTitle
           eyebrow="Contact"
           title="お問い合わせ"
-          description="企業案件、コラボレーション、出演依頼、ファンメッセージはこちらから。"
+          description="企業案件、コラボレーション、出演依頼、ファンメッセージを受け付けています。通常3〜5営業日以内に確認します。内容によって返信できない場合があります。"
           align="center"
         />
         <GlassCard className="mx-auto mt-14 max-w-3xl p-6 sm:p-8">

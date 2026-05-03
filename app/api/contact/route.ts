@@ -97,7 +97,7 @@ function validateContactBody(body: ContactRequestBody) {
     return {
       ok: false as const,
       code: "honeypot",
-      message: "Unable to send message.",
+      message: "送信できませんでした。時間をおいてもう一度お試しください。",
       status: 400,
     };
   }
@@ -111,7 +111,7 @@ function validateContactBody(body: ContactRequestBody) {
     return {
       ok: false as const,
       code: "required_fields",
-      message: "All fields are required.",
+      message: "未入力の項目があります。すべての項目をご入力ください。",
       status: 400,
     };
   }
@@ -127,7 +127,7 @@ function validateContactBody(body: ContactRequestBody) {
     return {
       ok: false as const,
       code: "invalid_email",
-      message: "Please enter a valid email address.",
+      message: "メールアドレスの形式をご確認ください。",
       status: 400,
     };
   }
@@ -141,7 +141,7 @@ function validateContactBody(body: ContactRequestBody) {
     return {
       ok: false as const,
       code: "field_too_long",
-      message: "Please shorten your message and try again.",
+      message: "入力内容が長すぎます。内容を短くしてもう一度お試しください。",
       status: 400,
     };
   }
@@ -195,7 +195,8 @@ function createAutoReplyLines(contact: ContactInput) {
     "\u4eca\u5f8c\u306e\u6d41\u308c:",
     "1. \u9001\u4fe1\u5185\u5bb9\u3092\u78ba\u8a8d\u3057\u307e\u3059\u3002",
     "2. \u5185\u5bb9\u306b\u5fdc\u3058\u3066\u62c5\u5f53\u8005\u3088\u308a\u3054\u9023\u7d61\u3057\u307e\u3059\u3002",
-    "3. \u8fd4\u4fe1\u304c\u5fc5\u8981\u306a\u5834\u5408\u306f\u3001\u901a\u5e38\u6570\u55b6\u696d\u65e5\u4ee5\u5185\u306b\u3054\u6848\u5185\u3057\u307e\u3059\u3002",
+    "3. \u8fd4\u4fe1\u304c\u5fc5\u8981\u306a\u5834\u5408\u306f\u3001\u901a\u5e383\u301c5\u55b6\u696d\u65e5\u4ee5\u5185\u306b\u78ba\u8a8d\u3057\u307e\u3059\u3002",
+    "\u5185\u5bb9\u306b\u3088\u3063\u3066\u306f\u8fd4\u4fe1\u3067\u304d\u306a\u3044\u5834\u5408\u304c\u3042\u308a\u307e\u3059\u3002",
     "",
     `${labels.submittedContent}:`,
     `${labels.type}: ${contact.type}`,
@@ -305,7 +306,10 @@ export async function POST(req: Request) {
       });
 
       return NextResponse.json(
-        { success: false, message: "Invalid request body." },
+        {
+          success: false,
+          message: "送信内容を確認できませんでした。入力内容をご確認ください。",
+        },
         { status: 400 },
       );
     }
@@ -337,7 +341,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please wait before sending another message.",
+          message: "短時間に複数回送信されています。時間をおいてもう一度お試しください。",
         },
         { status: 429 },
       );
@@ -353,7 +357,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please wait before sending another message.",
+          message: "短時間に複数回送信されています。時間をおいてもう一度お試しください。",
         },
         { status: 429 },
       );
@@ -387,7 +391,11 @@ export async function POST(req: Request) {
     console.error("Contact API error:", error);
 
     return NextResponse.json(
-      { success: false, message: "Failed to send message." },
+      {
+        success: false,
+        message:
+          "送信に失敗しました。恐れ入りますが、時間をおいてもう一度お試しください。",
+      },
       { status: 500 },
     );
   }

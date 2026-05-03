@@ -38,11 +38,11 @@ export function ContactForm() {
 
   const validateForm = () => {
     if (!form.name.trim() || !form.email.trim() || !form.type.trim() || !form.message.trim()) {
-      return "Please fill in all fields.";
+      return "未入力の項目があります。すべての項目をご入力ください。";
     }
 
     if (!emailPattern.test(form.email.trim())) {
-      return "Please enter a valid email address.";
+      return "メールアドレスの形式をご確認ください。";
     }
 
     return "";
@@ -79,15 +79,21 @@ export function ContactForm() {
       const result = (await response.json()) as { success?: boolean; message?: string };
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to send message.");
+        throw new Error(
+          result.message || "送信できませんでした。時間をおいてもう一度お試しください。",
+        );
       }
 
       setForm(initialFormState);
       setStatus("success");
-      setFeedback("Thank you. Your message has been sent.");
+      setFeedback("お問い合わせを受け付けました。通常3〜5営業日以内に確認します。");
     } catch (error) {
       setStatus("error");
-      setFeedback(error instanceof Error ? error.message : "Failed to send message.");
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "送信できませんでした。時間をおいてもう一度お試しください。",
+      );
     }
   };
 
@@ -95,6 +101,9 @@ export function ContactForm() {
 
   return (
     <form className="grid gap-6" onSubmit={handleSubmit}>
+      <div className="rounded-md border border-royalGold/20 bg-mainWhite/[0.035] px-4 py-4 text-sm leading-7 text-moonSilver/76">
+        お問い合わせ内容は通常3〜5営業日以内に確認します。内容によっては返信できない場合があります。
+      </div>
       <input
         aria-hidden="true"
         autoComplete="off"
@@ -111,7 +120,7 @@ export function ContactForm() {
           className="rounded-md border border-royalGold/25 bg-baseDark/70 px-4 py-3 text-mainWhite placeholder:text-moonSilver/35 focus:border-royalGold disabled:cursor-not-allowed disabled:opacity-60"
           name="name"
           onChange={(event) => updateField("name", event.target.value)}
-          placeholder="Your name"
+          placeholder="お名前"
           required
           type="text"
           value={form.name}
@@ -154,7 +163,7 @@ export function ContactForm() {
           className="min-h-44 rounded-md border border-royalGold/25 bg-baseDark/70 px-4 py-3 text-mainWhite placeholder:text-moonSilver/35 focus:border-royalGold disabled:cursor-not-allowed disabled:opacity-60"
           name="message"
           onChange={(event) => updateField("message", event.target.value)}
-          placeholder="Please write your inquiry."
+          placeholder="お問い合わせ内容をご記入ください。"
           required
           value={form.message}
           disabled={isLoading}

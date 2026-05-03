@@ -7,7 +7,7 @@ import { productItems } from "@/lib/products";
 
 export const metadata: Metadata = createMetadata({
   title: "SHOP",
-  description: "白玉 天の公式グッズ販売予定ページです。今後の商品追加に対応した構成です。",
+  description: "白玉 天の公式グッズ・デジタルコンテンツ準備状況を掲載しています。",
   path: "/shop",
 });
 
@@ -17,15 +17,15 @@ export default function ShopPage() {
       <div className="container-lux">
         <SectionTitle
           eyebrow="Shop"
-          title="Official Goods"
-          description="現在準備中です。アクリルスタンド、ボイス、壁紙、限定グッズなどを順次展開予定です。"
+          title="Coming Soon"
+          description="公式グッズ・デジタルコンテンツを準備中です。販売開始までしばらくお待ちください。"
           align="center"
         />
         <GlassCard className="mx-auto mt-12 max-w-3xl text-center">
           <ShoppingBag className="mx-auto size-10 text-royalGold" aria-hidden="true" />
-          <h2 className="mt-5 font-serif text-3xl text-mainWhite">Coming Soon</h2>
+          <h2 className="mt-5 font-serif text-3xl text-mainWhite">販売開始前です</h2>
           <p className="mt-4 leading-8 text-moonSilver/76">
-            決済機能や外部ショップ連携は未接続です。商品データを追加することで、カード表示を拡張できます。
+            現在ご購入いただける商品はありません。公式グッズ、ボイス、壁紙などのデジタルコンテンツを準備しています。
           </p>
         </GlassCard>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">

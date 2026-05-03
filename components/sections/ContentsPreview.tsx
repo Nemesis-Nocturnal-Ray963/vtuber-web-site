@@ -11,14 +11,14 @@ export function ContentsPreview() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionTitle
             eyebrow="Contents"
-            title="活動の入口"
-            description="配信、動画、音楽、企画、コラボへ自然に導くコンテンツ導線。"
+            title="Contents Coming Soon"
+            description="配信・動画・企画コンテンツを準備中です。公開までは公式SNSで最新情報をお知らせします。"
           />
           <Link
             className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.2em] text-royalGold transition hover:text-mainWhite"
             href="/contents"
           >
-            VIEW ALL <ArrowRight className="size-4" />
+            準備状況を見る <ArrowRight className="size-4" />
           </Link>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">

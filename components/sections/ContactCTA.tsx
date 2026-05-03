@@ -16,7 +16,7 @@ export function ContactCTA() {
                 企業案件・コラボレーションのご相談
               </h2>
               <p className="mt-5 max-w-3xl text-base leading-8 text-moonSilver/78">
-                PR配信、番組出演、楽曲、イベント、グッズ展開など、ブランドに沿ったご提案を受け付けています。
+                企業案件、コラボレーション、出演依頼、その他のお問い合わせを受け付けています。内容を確認のうえ、必要に応じてご連絡します。
               </p>
             </div>
             <div className="flex flex-wrap gap-4">

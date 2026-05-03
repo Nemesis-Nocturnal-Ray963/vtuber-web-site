@@ -20,7 +20,7 @@ export function Footer() {
             </p>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-7 text-moonSilver/72">
-            透明な祈りと白銀の召喚術で、配信、音楽、グッズ、企業案件へ広がる公式ブランドサイト。
+            白玉 天の公式サイトです。活動情報、コンテンツ、グッズ情報を順次公開します。
           </p>
         </div>
 

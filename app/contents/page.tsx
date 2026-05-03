@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { GlowButton } from "@/components/ui/GlowButton";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { contentItems } from "@/lib/contents";
-import { createMetadata } from "@/lib/site";
+import { createMetadata, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
   title: "CONTENTS",
-  description: "白玉 天の配信、動画、音楽、ゲーム、コラボ、イベント活動の一覧です。",
+  description: "白玉 天の配信・動画・企画コンテンツ準備状況を掲載しています。",
   path: "/contents",
 });
 
@@ -16,10 +18,25 @@ export default function ContentsPage() {
       <div className="container-lux">
         <SectionTitle
           eyebrow="Contents"
-          title="活動内容"
-          description="ファンコミュニティと企業パートナーの双方へ届く、多面的なコンテンツ展開。"
+          title="Coming Soon"
+          description="配信・動画・企画コンテンツを準備中です。公開までしばらくお待ちください。"
           align="center"
         />
+        <GlassCard className="mx-auto mt-12 max-w-3xl text-center">
+          <Sparkles className="mx-auto size-10 text-royalGold" aria-hidden="true" />
+          <h2 className="mt-5 font-serif text-3xl text-mainWhite">配信・動画・企画コンテンツを準備中</h2>
+          <p className="mt-4 leading-8 text-moonSilver/76">
+            初回公開に向けて、活動内容と各コンテンツの導線を整備しています。最新のお知らせは公式SNSをご確認ください。
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            {siteConfig.socialLinks.map((link) => (
+              <GlowButton href={link.href} key={link.label} variant="ghost">
+                {link.label}
+                <ExternalLink className="size-4" />
+              </GlowButton>
+            ))}
+          </div>
+        </GlassCard>
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {contentItems.map((item) => {
             const Icon = item.icon;

@@ -11,13 +11,13 @@ export function ShopPreview() {
         <div>
           <SectionTitle
             eyebrow="Shop"
-            title="グッズ展開予定"
-            description="公式グッズ、デジタルコンテンツ、記念アイテムを追加しやすい商品データ構造で設計しています。"
+            title="Shop Coming Soon"
+            description="公式グッズ・デジタルコンテンツを準備中です。販売開始前のため、現在ご購入いただける商品はありません。"
           />
           <div className="mt-8">
             <GlowButton href="/shop" variant="secondary">
               <ShoppingBag className="size-4" />
-              SHOPへ
+              SHOP準備状況を見る
             </GlowButton>
           </div>
         </div>
