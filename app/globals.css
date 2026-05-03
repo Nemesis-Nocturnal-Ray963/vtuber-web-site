@@ -144,3 +144,19 @@ textarea {
   inset: 27%;
   border-color: rgba(201, 168, 106, 0.2);
 }
+
+.hero-character-float {
+  animation: hero-character-float 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hero-character-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}

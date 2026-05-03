@@ -29,13 +29,18 @@ export function GlowButton({
   children,
   variant = "primary",
   className = "",
+  style,
   ...buttonProps
 }: GlowButtonProps) {
   const classes = `${baseClasses} ${variants[variant]} ${className}`;
 
   if (href) {
     return (
-      <motion.div whileHover={{ y: -2, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+      <motion.div
+        style={{ willChange: "transform" }}
+        whileHover={{ y: -2, scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
         <Link className={classes} href={href}>
           {children}
         </Link>
@@ -47,6 +52,7 @@ export function GlowButton({
     <motion.button
       className={classes}
       type={buttonProps.type ?? "button"}
+      style={{ willChange: "transform", ...style }}
       whileHover={{ y: -2, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       {...buttonProps}
