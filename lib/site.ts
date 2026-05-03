@@ -5,6 +5,11 @@ export const siteConfig = {
   characterName: "白玉 天",
   description: "白銀の召喚士VTuber『白玉 天』の公式サイト",
   url: "https://example.com",
+  images: {
+    favicon: "/images/favicon-32.png",
+    logo: "/images/site-logo.png",
+    ogp: "/images/ogp.png",
+  },
   nav: [
     { name: "HOME", href: "/" },
     { name: "PROFILE", href: "/profile" },
@@ -44,11 +49,20 @@ export function createMetadata({ title, description, path = "/" }: MetadataInput
       url,
       siteName: siteConfig.name,
       type: "website",
+      images: [
+        {
+          url: siteConfig.images.ogp,
+          width: 768,
+          height: 512,
+          alt: siteConfig.name,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
+      images: [siteConfig.images.ogp],
     },
   };
 }

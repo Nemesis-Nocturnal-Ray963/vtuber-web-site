@@ -7,6 +7,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   ...createMetadata(),
+  icons: {
+    icon: [
+      { url: siteConfig.images.favicon, sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon-64.png", sizes: "64x64", type: "image/png" },
+    ],
+    shortcut: siteConfig.images.favicon,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, Sparkles, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems, siteConfig } from "@/lib/site";
@@ -14,14 +15,19 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-royalGold/15 bg-baseDark/70 backdrop-blur-2xl">
       <div className="container-lux flex h-20 items-center justify-between">
         <Link
-          className="flex items-center gap-3 text-mainWhite transition hover:text-royalGold"
+          className="flex min-w-0 items-center gap-3 text-mainWhite transition hover:text-royalGold"
           href="/"
           onClick={() => setOpen(false)}
         >
-          <span className="flex size-10 items-center justify-center rounded-full border border-royalGold/50 bg-mainWhite/5 shadow-glow">
-            <Sparkles className="size-5 text-royalGold" aria-hidden="true" />
-          </span>
-          <span className="font-serif text-lg font-semibold tracking-[0.18em]">
+          <Image
+            alt={siteConfig.name}
+            className="h-10 w-auto shrink-0 object-contain sm:h-12"
+            height={51}
+            priority
+            src={siteConfig.images.logo}
+            width={150}
+          />
+          <span className="hidden font-serif text-base font-semibold tracking-[0.16em] sm:inline lg:text-lg">
             {siteConfig.characterName}
           </span>
         </Link>

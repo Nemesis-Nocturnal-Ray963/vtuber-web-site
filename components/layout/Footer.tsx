@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 import { navItems, siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -8,10 +8,14 @@ export function Footer() {
       <div className="container-lux grid gap-10 md:grid-cols-[1.1fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-full border border-royalGold/50 bg-mainWhite/5">
-              <Sparkles className="size-5 text-royalGold" aria-hidden="true" />
-            </span>
-            <p className="font-serif text-xl font-semibold tracking-[0.18em] text-mainWhite">
+            <Image
+              alt={siteConfig.name}
+              className="h-11 w-auto shrink-0 object-contain"
+              height={51}
+              src={siteConfig.images.logo}
+              width={150}
+            />
+            <p className="font-serif text-lg font-semibold tracking-[0.16em] text-mainWhite sm:text-xl">
               {siteConfig.name}
             </p>
           </div>
